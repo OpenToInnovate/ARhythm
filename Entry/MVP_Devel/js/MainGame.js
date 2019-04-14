@@ -59,7 +59,9 @@ export default class MainGame extends Component {
         <GameObjects position={[0,0,-40]} delay={0}/>
         <GameObjects position={[-5,2,-40]} delay={3000}/>
         <GameObjects position={[4,4,-40]} delay={3500}/>
+        <GameObjects position={[0,0,-40]} delay={4400}/>
         <GameObjects position={[1,-4,-40]} delay={9000}/>
+        <GameObjects position={[4,0,-30]} delay={2000}/>
         <ViroNode>{InitialARScene.getSmoke()}</ViroNode>
         <ViroNode>{InitialARSounds.startBGM()}</ViroNode> 
       </ViroARScene>

@@ -23,6 +23,7 @@ import {
   Viro3DObject,
   ViroSound,
   ViroAnimations,
+  ViroParticleEmitter,
   ViroCamera,
 } from 'react-viro';
 
@@ -62,10 +63,58 @@ class GameObjects extends Component {
               name: "parallelAnim",
               delay:this.props.delay,
               interruptible: true,
-              loop:true,
+              loop:false,
               run:true,
             }}
       />
+          <ViroParticleEmitter
+              position={this.props.position}
+              scale={[1, 1, 1]}
+              duration={1100}
+              delay={0}
+              visible={!this.state.cubeVisible}
+              run={!this.state.cubeVisible}
+              loop={false}
+              fixedToEmitter={false}
+
+              image={{
+                source:require("./res/particle_fire.png"),
+                height:1,
+                width:1,
+              }}
+
+              spawnBehavior={{
+                particleLifetime:[500,500],
+                emissionRatePerSecond:[200,200],
+                maxParticles:200,
+                spawnVolume:{
+                  shape:"Sphere",
+                  params:[.3, .3, .3],
+                  spawnOnSurface:true
+                },
+              }}
+              animation={{
+                name: "parallelAnim",
+                delay:this.props.delay,
+                interruptible: true,
+                loop:false,
+                run:true,
+              }}
+              particleAppearance={{
+                opacity:{
+                  initialRange:[0.0, 0.0],
+                  interpolation:[
+                    {endValue:0.9, interval:[0,200]},
+                    {endValue:0.0, interval:[900,1500]}
+                  ]
+                },
+              }}
+
+              particlePhysics={{
+                velocity:{initialRange:[[-2,2,0], [-2,-2,0]]},
+                acceleration:{initialRange:[[0,0,0], [0,0,0]]}
+              }}
+          />
       <ViroSound paused={this.state.paused} onFinish={this._onclickyReset} muted={this.state.muted} 
             source={require('./res/music/ripple.wav')} loop={false} volume={1.0} 
       /> 
