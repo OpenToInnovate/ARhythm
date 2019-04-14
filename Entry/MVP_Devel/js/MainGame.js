@@ -63,25 +63,24 @@ export default class MainGame extends Component {
     } else {
       return (
         <ViroARScene onTrackingUpdated={this._onInitialized} >
-          <ViroText text="Calibrating..." width={2} height={2} position={[0, 0, -2]} style={styles.helloWorldTextStyle} />
+          <ViroText text="Calibrating..." width={2} height={2} position={[0, 0, -2]} style={styles.genericTextStyle} />
         </ViroARScene>
       );
     }
   }
-
 
   _onInitialized(state, reason) {
     if (state == ViroConstants.TRACKING_NORMAL) {
       this.setState({ trackingComplete: true });
       //
     } else if (state == ViroConstants.TRACKING_NONE) {
-      // Handle loss of tracking
+      // TODO: Handle loss of tracking
     }
   }
 }
 
 var styles = StyleSheet.create({
-  helloWorldTextStyle: {
+  genericTextStyle: {
     fontFamily: 'Arial',
     fontSize: 15,
     color: '#ffffff',
