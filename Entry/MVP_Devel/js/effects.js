@@ -139,16 +139,16 @@ import {
            fixedToEmitter={true}
 
            image={{
-                  source:require("./res/particle_bubble.png"),                 // Image source of the image particle.
-                  height:0.1,
-                  width:0.1
+                  source:require("./res/alien.png"),                 // Image source of the image particle.
+                  height:0.05,
+                  width:0.05
            }}
 
            spawnBehavior={{
              particleLifetime:[14000,14000],
-             emissionRatePerSecond:[80, 150], // or 300 with a max of 2000
+             emissionRatePerSecond:[20, 60], // or 300 with a max of 2000
              spawnVolume:{shape:"box", params:[15, 1, 15], spawnOnSurface:false},
-             maxParticles:2000
+             maxParticles:200
            }}
            particleAppearance={{
              opacity:{
@@ -213,8 +213,8 @@ import {
                initialRange:[[1,1,1], [1,1,1]],
                interpolation:[
                  {endValue:[2,2,2], interval:[0,10000]},
-                 {endValue:[1,1,1], interval:[10000,19000]},
-                 {endValue:[0,0,0], interval:[19000,20000]},
+                 {endValue:[1,1,1], interval:[10000,29000]},
+                 {endValue:[0,0,0], interval:[29000,40000]},
                ]
              },
 
@@ -229,8 +229,8 @@ import {
            }}
 
            particlePhysics={{
-             velocity:{initialRange:[[.02,-.05,.3],
-                                     [-.02,-.1,-.3]]},
+             velocity:{initialRange:[[.02,.05,.3],
+                                     [-.02,.1,-.3]]},
              acceleration:{initialRange:[[0,0,0], [0,0,0]]}
            }}
        />

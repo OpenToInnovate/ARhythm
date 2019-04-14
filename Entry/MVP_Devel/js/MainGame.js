@@ -22,7 +22,7 @@ export default class MainGame extends Component {
 
     // Set initial state here
     this.state = {
-      text : "Initializing AR..."
+      text : "Loading Game..."
     };
 
     // bind 'this' to functions
@@ -34,24 +34,22 @@ export default class MainGame extends Component {
       <ViroARScene onTrackingUpdated={this._onInitialized} >
         <ViroAmbientLight color={"#aaaaaa"} />
         <ViroDirectionalLight color="#ffffff" direction={[0,-1,-.2]}/>
-        <ViroNode position={[0, 0, -2]} scale={[.5, .5, .5]} dragType="FixedToWorld" onDrag={()=>{}}>
-        <Viro3DObject
-          source={require('./res/assets/object_cube.vrx')}
-          resources={[require('./res/assets/cube_diffuse.png'),
-                      require('./res/assets/cube_specular.png')]}
-          type="VRX"
-          />
-
-      </ViroNode>
+          <ViroNode position={[0, 0, -2]} scale={[.5, .5, .5]}>
+            <Viro3DObject
+              source={require('./res/assets/object_cube.vrx')}
+              resources={[require('./res/assets/cube_diffuse.png'),
+                          require('./res/assets/cube_specular.png')]}
+              type="VRX"
+              />
+        </ViroNode>
+        <ViroNode>{InitialARScene.getSmoke()}</ViroNode>        
       </ViroARScene>
     );
   }
 
   _onInitialized(state, reason) {
     if (state == ViroConstants.TRACKING_NORMAL) {
-      this.setState({
-        text : "Hello World!"
-      });
+      //
     } else if (state == ViroConstants.TRACKING_NONE) {
       // Handle loss of tracking
     }
@@ -61,7 +59,7 @@ export default class MainGame extends Component {
 var styles = StyleSheet.create({
   helloWorldTextStyle: {
     fontFamily: 'Arial',
-    fontSize: 30,
+    fontSize: 15,
     color: '#ffffff',
     textAlignVertical: 'center',
     textAlign: 'center',  
