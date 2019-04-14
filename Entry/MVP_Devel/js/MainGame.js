@@ -1,3 +1,19 @@
+/*
+* Copyright (C) 2019 Tony G - https://github.com/OpenToInnovate/
+* 
+* This file may be used under the terms of the GNU General Public License
+* version 3 as published by the Free Software Foundation and appearing in
+* the file LICENSE.GPL included in the packaging of this file.
+* 
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+* 
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see <https://www.gnu.org/licenses/>.
+*/
+
 'use strict';
 
 import React, { Component } from 'react';
@@ -14,6 +30,7 @@ import {
 } from 'react-viro';
 
 var InitialARScene = require('./effects');
+var InitialARObjects = require('./3dObjects');
 
 export default class MainGame extends Component {
 
@@ -34,14 +51,7 @@ export default class MainGame extends Component {
       <ViroARScene onTrackingUpdated={this._onInitialized} >
         <ViroAmbientLight color={"#aaaaaa"} />
         <ViroDirectionalLight color="#ffffff" direction={[0,-1,-.2]}/>
-          <ViroNode position={[0, 0, -2]} scale={[.5, .5, .5]}>
-            <Viro3DObject
-              source={require('./res/assets/object_cube.vrx')}
-              resources={[require('./res/assets/cube_diffuse.png'),
-                          require('./res/assets/cube_specular.png')]}
-              type="VRX"
-              />
-        </ViroNode>
+        <ViroNode position={[0, 0, -2]} scale={[.5, .5, .5]}>{InitialARObjects.getTronCube()}</ViroNode>   
         <ViroNode>{InitialARScene.getSmoke()}</ViroNode>        
       </ViroARScene>
     );

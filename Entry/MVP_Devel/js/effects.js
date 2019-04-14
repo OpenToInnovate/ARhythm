@@ -1,11 +1,18 @@
-/**
- * Copyright (c) 2017-present, Viro, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- */
+/*
+* Copyright (C) 2019 Tony G - https://github.com/OpenToInnovate/
+* 
+* This file may be used under the terms of the GNU General Public License
+* version 3 as published by the Free Software Foundation and appearing in
+* the file LICENSE.GPL included in the packaging of this file.
+* 
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+* 
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see <https://www.gnu.org/licenses/>.
+*/
  
 'use strict';
 
@@ -20,49 +27,6 @@ import {
   ViroParticleEmitter,
   ViroUtils,
 } from 'react-viro';
-
-/**
-* This file is a collection of functions that configure each "Effect" in the app.
-* The Snow, Bubbles, Smoke & Fireworks are Particle Effects and therefore configure <ViroParticleEmitter> here.
-* Rest of the effects are video "Post Processing Effects" that don't require Particle Emitters.
-*
-* These functions are tied with the data model used in the ListView at the bottoms of the screen. The data model is
-* defined at path: js/model/EffectItems.js
-*/
- export function getEmptyEffect() {
-   var views = [];
-   return views;
- }
-
- export function getGrayScale() {
-   var views = [];
-   return views;
- }
-
- export function getSepia() {
-   var views = [];
-   return views;
- }
-
- export function getThermal() {
-   var views = [];
-   return views;
- }
-
- export function getSinCity() {
-   var views = [];
-   return views;
- }
-
- export function getBarrel() {
-   var views = [];
-   return views;
- }
-
- export function getPinCushion() {
-   var views = [];
-   return views;
- }
 
  export function getSnow(){
    var views = [];
