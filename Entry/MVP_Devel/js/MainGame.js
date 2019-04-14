@@ -26,48 +26,53 @@ import {
   ViroAmbientLight,
   ViroDirectionalLight,
   ViroConstants,
+  Viro360Image,
+  ViroText,
   ViroSound,
   ViroQuad,
   ViroMaterials,
 } from 'react-viro';
 
+import GameObjects from './3dObjects';
+
 var InitialARScene = require('./effects');
-var InitialARObjects = require('./3dObjects');
 var InitialARSounds = require('./sounds');
-var Cube1Ref;
-var BGMRef;
 
 export default class MainGame extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { paused: true };
+    this.state = { trackingComplete: false };
 
     // bind 'this' to functions
     this._onInitialized = this._onInitialized.bind(this);
-    this._onclicky = this._onclicky.bind(this);
+
   }
 
   render() {
+    if (this.state.trackingComplete) {
     return (
       <ViroARScene onTrackingUpdated={this._onInitialized} >
         <ViroAmbientLight color={"#ff0000"} />
         <ViroDirectionalLight color="#ffffff" direction={[0,-1,-.2]}/>
-        <ViroNode ref={Cube1Ref} onClick={this._onclicky} position={[0, 0, -2]} rotation={[10, 45, 0]} scale={[.5, .5, .5]}>{InitialARObjects.getTronCube()}</ViroNode>      
+        <GameObjects />
         <ViroNode>{InitialARScene.getSmoke()}</ViroNode>
         <ViroNode>{InitialARSounds.startBGM()}</ViroNode> 
-        <ViroSound paused={this.state.paused} onFinish={this._onclicky} muted={false} source={require('./res/music/preview2.wav')} loop={false} volume={1.0}/> 
       </ViroARScene>
     );
+    } else {
+      return (
+        <ViroARScene onTrackingUpdated={this._onInitialized} >
+          <ViroText text="Calibrating..." width={2} height={2} position={[0, 0, -2]} style={styles.helloWorldTextStyle} />
+        </ViroARScene>
+      );
+    }
   }
 
-
-  _onclicky() {
-    this.setState({ paused: !this.state.paused });
-  }
 
   _onInitialized(state, reason) {
     if (state == ViroConstants.TRACKING_NORMAL) {
+      this.setState({ trackingComplete: true });
       //
     } else if (state == ViroConstants.TRACKING_NONE) {
       // Handle loss of tracking

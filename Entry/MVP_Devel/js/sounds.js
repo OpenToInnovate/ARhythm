@@ -22,21 +22,12 @@ import {
   ViroSound,
   ViroSpatialSound,
 } from 'react-viro';
-/*
-// TODO: Figure out how this actually works, after re-reading the docs it looks like 
-// This is really only for audio sources to cache locally (Not necessarily in memory)
-import resolveAssetSource from "resolveAssetSource"; 
-ViroSound.preloadSounds({ 
-  "song" : resolveAssetSource(require('./res/music/MrBlueSky/Song.mp3')),
-  "sfx1" : resolveAssetSource(require('./res/music/preview.mp3')),
-  "sfx2" : resolveAssetSource(require('./res/music/preview2.mp3')),
-  "sfx3" : resolveAssetSource(require('./res/music/ripple.wav')),
-  "sfx4" : resolveAssetSource(require('./res/music/drum_bass.mp3'))
-});
-*/
- export function startBGM(){
+
+//export class PhotosSelector extends Component {
+
+export function startBGM(){
   return((
-    <ViroSound ref="internalBGM" paused={false} muted={false} source={require('./res/music/MrBlueSky/Song.mp3')} loop={false} volume={0.2}/>
+    <ViroSound paused={false} muted={false} source={require('./res/music/MrBlueSky/Song.mp3')} loop={false} volume={0.2}/>
      ));
  }
 
