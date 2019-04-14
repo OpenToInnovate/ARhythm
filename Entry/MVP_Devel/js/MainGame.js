@@ -56,7 +56,10 @@ export default class MainGame extends Component {
       <ViroARScene onTrackingUpdated={this._onInitialized} >
         <ViroAmbientLight color={"#ff0000"} />
         <ViroDirectionalLight color="#ffffff" direction={[0,-1,-.2]}/>
-        <GameObjects />
+        <GameObjects position={[0,0,-40]} delay={0}/>
+        <GameObjects position={[-5,2,-40]} delay={3000}/>
+        <GameObjects position={[4,4,-40]} delay={3500}/>
+        <GameObjects position={[1,-4,-40]} delay={9000}/>
         <ViroNode>{InitialARScene.getSmoke()}</ViroNode>
         <ViroNode>{InitialARSounds.startBGM()}</ViroNode> 
       </ViroARScene>

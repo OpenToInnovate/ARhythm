@@ -39,14 +39,17 @@ ViroAnimations.registerAnimations({
 class GameObjects extends Component {
   constructor(props) {
     super(props);
+ //   this.positionX = new Animated.position;
     this.state = { muted: false, paused: true, cubeVisible: true };
     this._onclicky = this._onclicky.bind(this);
     this._onclickyReset = this._onclickyReset.bind(this);
+    this.props.position
+    this.props.delay
   }
 
   render(){
     return((
-      <ViroNode position={[0, 0, -40]} visible={this.state.cubeVisible} rotation={[0, 0, 0]} scale={[1, 1, 1]}>
+      <ViroNode position={this.props.position} visible={this.state.cubeVisible} rotation={[0, 0, 0]} scale={[1, 1, 1]}>
       <Viro3DObject
             onClick={this._onclicky}
             source={require('./res/assets/object_cube.vrx')}
@@ -56,7 +59,7 @@ class GameObjects extends Component {
             type="VRX"
             animation={{
               name: "parallelAnim",
-              delay:0,
+              delay:this.props.delay,
               interruptible: true,
               loop:true,
               run:true,
