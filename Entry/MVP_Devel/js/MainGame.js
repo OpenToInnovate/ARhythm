@@ -13,6 +13,8 @@ import {
   ViroConstants,
 } from 'react-viro';
 
+var InitialARScene = require('./effects');
+
 export default class MainGame extends Component {
 
   constructor() {
