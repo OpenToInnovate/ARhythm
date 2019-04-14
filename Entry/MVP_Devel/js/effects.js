@@ -17,13 +17,8 @@
 'use strict';
 
 import React, { Component } from 'react';
-import {
-  AppRegistry,
-  View
-} from 'react-native';
 
 import {
-  ViroImage,
   ViroParticleEmitter,
   ViroUtils,
 } from 'react-viro';

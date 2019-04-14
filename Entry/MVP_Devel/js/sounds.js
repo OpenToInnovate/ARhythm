@@ -19,16 +19,21 @@
 import React, { Component } from 'react';
 
 import {
-  Viro3DObject,
+  ViroSound,
+  ViroSpatialSound,
 } from 'react-viro';
 
- export function getTronCube(){
+import resolveAssetSource from "resolveAssetSource"; 
+ViroSound.preloadSounds({ 
+  "song" : resolveAssetSource(require('./res/music/MrBlueSky/Song.mp3')),
+  "sfx1" : resolveAssetSource(require('./res/music/preview.wav')),
+  "sfx2" : resolveAssetSource(require('./res/music/preview2.wav')),
+  "sfx3" : resolveAssetSource(require('./res/music/ripple.wav')),
+  "sfx4" : resolveAssetSource(require('./res/music/drum_bass.wav'))
+});
+
+ export function startGBM(){
   return((
-    <Viro3DObject
-    source={require('./res/assets/object_cube.vrx')}
-    resources={[require('./res/assets/cube_diffuse.png'),
-                require('./res/assets/cube_specular.png')]}
-    type="VRX"
-    />
+    <ViroSound paused={false} muted={false} source={'song'} loop={false} volume={0.2}/>
      ));
  }
