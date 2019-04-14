@@ -35,38 +35,35 @@ var InitialARScene = require('./effects');
 var InitialARObjects = require('./3dObjects');
 var InitialARSounds = require('./sounds');
 var Cube1Ref;
+var BGMRef;
 
 export default class MainGame extends Component {
 
-  constructor() {
-    super();
-
-    // Set initial state here
-    this.state = {
-      text : "Loading Game..."
-    };
+  constructor(props) {
+    super(props);
+    this.state = { paused: true };
 
     // bind 'this' to functions
     this._onInitialized = this._onInitialized.bind(this);
     this._onclicky = this._onclicky.bind(this);
   }
 
-//       <ViroNode>{InitialARSounds.startGBM()}</ViroNode> 
   render() {
     return (
       <ViroARScene onTrackingUpdated={this._onInitialized} >
         <ViroAmbientLight color={"#ff0000"} />
         <ViroDirectionalLight color="#ffffff" direction={[0,-1,-.2]}/>
-        <ViroNode ref={Cube1Ref} onClick={this._onclicky} position={[0, 0, -2]} rotation={[10, 45, 0]} scale={[.5, .5, .5]}>{InitialARObjects.getTronCube()}</ViroNode>   
-        <ViroNode>{InitialARSounds.playSfx4()}</ViroNode>    
-        <ViroNode>{InitialARScene.getSmoke()}</ViroNode> 
+        <ViroNode ref={Cube1Ref} onClick={this._onclicky} position={[0, 0, -2]} rotation={[10, 45, 0]} scale={[.5, .5, .5]}>{InitialARObjects.getTronCube()}</ViroNode>      
+        <ViroNode>{InitialARScene.getSmoke()}</ViroNode>
+        <ViroNode>{InitialARSounds.startBGM()}</ViroNode> 
+        <ViroSound paused={this.state.paused} onFinish={this._onclicky} muted={false} source={require('./res/music/preview2.wav')} loop={false} volume={1.0}/> 
       </ViroARScene>
     );
   }
 
+
   _onclicky() {
-//    <ViroNode>{InitialARSounds.startGBM()}</ViroNode> 
-//    InitialARSounds.playSfx1();
+    this.setState({ paused: !this.state.paused });
   }
 
   _onInitialized(state, reason) {

@@ -22,7 +22,9 @@ import {
   ViroSound,
   ViroSpatialSound,
 } from 'react-viro';
-
+/*
+// TODO: Figure out how this actually works, after re-reading the docs it looks like 
+// This is really only for audio sources to cache locally (Not necessarily in memory)
 import resolveAssetSource from "resolveAssetSource"; 
 ViroSound.preloadSounds({ 
   "song" : resolveAssetSource(require('./res/music/MrBlueSky/Song.mp3')),
@@ -31,33 +33,33 @@ ViroSound.preloadSounds({
   "sfx3" : resolveAssetSource(require('./res/music/ripple.wav')),
   "sfx4" : resolveAssetSource(require('./res/music/drum_bass.mp3'))
 });
-
- export function startGBM(){
+*/
+ export function startBGM(){
   return((
-    <ViroSound paused={false} muted={false} source={'song'} loop={false} volume={0.2}/>
+    <ViroSound ref="internalBGM" paused={false} muted={false} source={require('./res/music/MrBlueSky/Song.mp3')} loop={false} volume={0.2}/>
      ));
  }
 
  export function playSfx1(){
   return((
-    <ViroSound paused={false} muted={false} source={'sfx1'} loop={true} volume={1.2}/>
+    <ViroSound paused={false} muted={false} source={require('./res/music/preview.wav')} loop={false} volume={1.0}/>
      ));
  }
 
  export function playSfx2(){
   return((
-    <ViroSound paused={false} muted={false} source={'sfx2'} loop={true} volume={1.2}/>
+    <ViroSound paused={false} muted={false} source={require('./res/music/preview2.wav')} loop={false} volume={1.0}/>
      ));
  }
 
  export function playSfx3(){
   return((
-    <ViroSound paused={false} muted={false} source={'sfx3'} loop={true} volume={1.2}/>
+    <ViroSound paused={false} muted={false} source={require('./res/music/ripple.wav')} loop={false} volume={1.0}/>
      ));
  }
 
  export function playSfx4(){
   return((
-    <ViroSound paused={false} muted={false} source={'sfx4'} loop={true} volume={1.2}/>
+    <ViroSound paused={false} muted={false} source={require('./res/music/drum_bass.wav')} loop={yes} volume={1.0}/>
      ));
  }
