@@ -49,13 +49,14 @@ class GameObjects extends Component {
 
   render(){
     return((
-      <ViroNode position={this.props.position} visible={this.state.cubeVisible} rotation={[0, 0, 0]} scale={[1, 1, 1]}>
+      <ViroNode position={this.props.position} rotation={[0, 0, 0]} scale={[1, 1, 1]}>
       <Viro3DObject
             onClick={this._onclicky}
             source={require('./res/assets/object_cube.vrx')}
             resources={[require('./res/assets/cube_diffuse.png'),
                         require('./res/assets/cube_specular.png')]}
             highAccuracyEvents={true}
+            visible={this.state.cubeVisible}
             type="VRX"
             animation={{
               name: "parallelAnim",
@@ -74,12 +75,12 @@ class GameObjects extends Component {
 
   _onclicky() {
     this.setState({ paused: !this.state.paused });
+    this.setState({ cubeVisible: !this.state.cubeVisible });
   }
 
   _onclickyReset() {
     this.setState({ paused: !this.state.paused });
  //   this.setState({ muted: false });
-    this.setState({ cubeVisible: !this.state.cubeVisible });
   }
   
 };
