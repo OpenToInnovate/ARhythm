@@ -26,14 +26,38 @@ import {
 import resolveAssetSource from "resolveAssetSource"; 
 ViroSound.preloadSounds({ 
   "song" : resolveAssetSource(require('./res/music/MrBlueSky/Song.mp3')),
-  "sfx1" : resolveAssetSource(require('./res/music/preview.wav')),
-  "sfx2" : resolveAssetSource(require('./res/music/preview2.wav')),
+  "sfx1" : resolveAssetSource(require('./res/music/preview.mp3')),
+  "sfx2" : resolveAssetSource(require('./res/music/preview2.mp3')),
   "sfx3" : resolveAssetSource(require('./res/music/ripple.wav')),
-  "sfx4" : resolveAssetSource(require('./res/music/drum_bass.wav'))
+  "sfx4" : resolveAssetSource(require('./res/music/drum_bass.mp3'))
 });
 
  export function startGBM(){
   return((
     <ViroSound paused={false} muted={false} source={'song'} loop={false} volume={0.2}/>
+     ));
+ }
+
+ export function playSfx1(){
+  return((
+    <ViroSound paused={false} muted={false} source={'sfx1'} loop={true} volume={1.2}/>
+     ));
+ }
+
+ export function playSfx2(){
+  return((
+    <ViroSound paused={false} muted={false} source={'sfx2'} loop={true} volume={1.2}/>
+     ));
+ }
+
+ export function playSfx3(){
+  return((
+    <ViroSound paused={false} muted={false} source={'sfx3'} loop={true} volume={1.2}/>
+     ));
+ }
+
+ export function playSfx4(){
+  return((
+    <ViroSound paused={false} muted={false} source={'sfx4'} loop={true} volume={1.2}/>
      ));
  }

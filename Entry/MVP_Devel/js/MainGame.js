@@ -26,6 +26,7 @@ import {
   ViroAmbientLight,
   ViroDirectionalLight,
   ViroConstants,
+  ViroSound,
   ViroQuad,
   ViroMaterials,
 } from 'react-viro';
@@ -50,20 +51,22 @@ export default class MainGame extends Component {
     this._onclicky = this._onclicky.bind(this);
   }
 
+//       <ViroNode>{InitialARSounds.startGBM()}</ViroNode> 
   render() {
     return (
       <ViroARScene onTrackingUpdated={this._onInitialized} >
         <ViroAmbientLight color={"#ff0000"} />
         <ViroDirectionalLight color="#ffffff" direction={[0,-1,-.2]}/>
         <ViroNode ref={Cube1Ref} onClick={this._onclicky} position={[0, 0, -2]} rotation={[10, 45, 0]} scale={[.5, .5, .5]}>{InitialARObjects.getTronCube()}</ViroNode>   
-        <ViroNode>{InitialARScene.getSmoke()}</ViroNode>    
-        <ViroNode>{InitialARSounds.startGBM()}</ViroNode> 
+        <ViroNode>{InitialARSounds.playSfx4()}</ViroNode>    
+        <ViroNode>{InitialARScene.getSmoke()}</ViroNode> 
       </ViroARScene>
     );
   }
 
   _onclicky() {
- //   Cube1Ref.props.rotation=[60, 15, 0];
+//    <ViroNode>{InitialARSounds.startGBM()}</ViroNode> 
+//    InitialARSounds.playSfx1();
   }
 
   _onInitialized(state, reason) {
