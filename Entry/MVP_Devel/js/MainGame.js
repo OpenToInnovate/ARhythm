@@ -19,13 +19,14 @@
 import React, { Component } from 'react';
 
 import {StyleSheet} from 'react-native';
-
+ //       <ViroCamera position={[0, 0, 0]} rotation={[0, 0, 0]} active={true}/>
 import {
   ViroARScene,
   ViroNode,
   ViroAmbientLight,
   ViroDirectionalLight,
   ViroConstants,
+  ViroCamera,
   Viro360Image,
   ViroText,
   ViroSound,

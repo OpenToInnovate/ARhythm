@@ -23,17 +23,17 @@ import {
   Viro3DObject,
   ViroSound,
   ViroAnimations,
+  ViroCamera,
 } from 'react-viro';
 
 var InitialARSounds = require('./sounds');
 
 ViroAnimations.registerAnimations({
-  loopRotate:{
-    properties:{
-      rotateY:"+=95",
-      rotateX:"+=31",
-    }, duration:600
-  }
+  moveToPos:{properties:{positionX:0, positionY:0, positionZ:40}, duration:4000, delay:0},
+  loopRotate:{properties:{rotateY:"+=400", rotateX:"+=1200", }, duration:4000 },
+  parallelAnim:[
+    ["moveToPos"],["loopRotate"]
+],
 });
 
 class GameObjects extends Component {
@@ -46,7 +46,7 @@ class GameObjects extends Component {
 
   render(){
     return((
-      <ViroNode position={[0, 0, -2]} visible={this.state.cubeVisible} rotation={[10, 45, 0]} scale={[.5, .5, .5]}>
+      <ViroNode position={[0, 0, -40]} visible={this.state.cubeVisible} rotation={[0, 0, 0]} scale={[1, 1, 1]}>
       <Viro3DObject
             onClick={this._onclicky}
             source={require('./res/assets/object_cube.vrx')}
@@ -55,13 +55,12 @@ class GameObjects extends Component {
             highAccuracyEvents={true}
             type="VRX"
             animation={{
-              name: "loopRotate",
+              name: "parallelAnim",
               delay:0,
-              interruptible: false,
+              interruptible: true,
               loop:true,
               run:true,
             }}
-            
       />
       <ViroSound paused={this.state.paused} onFinish={this._onclickyReset} muted={this.state.muted} 
             source={require('./res/music/ripple.wav')} loop={false} volume={1.0} 
@@ -77,7 +76,7 @@ class GameObjects extends Component {
   _onclickyReset() {
     this.setState({ paused: !this.state.paused });
  //   this.setState({ muted: false });
- //   this.setState({ cubeVisible: !this.state.cubeVisible });
+    this.setState({ cubeVisible: !this.state.cubeVisible });
   }
   
 };
