@@ -75,6 +75,13 @@ export default class MainGame extends Component {
     }
   }
 
+  /*
+  getSmoke
+  getSnow
+  getBubbles
+  getFireWorks
+  */
+
   _onInitialized(state, reason) {
     if (state == ViroConstants.TRACKING_NORMAL) {
       this.setState({ trackingComplete: true });
