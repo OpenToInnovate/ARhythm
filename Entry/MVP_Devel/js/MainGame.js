@@ -56,12 +56,12 @@ export default class MainGame extends Component {
       <ViroARScene onTrackingUpdated={this._onInitialized} >
         <ViroAmbientLight color={"#ff0000"} />
         <ViroDirectionalLight color="#ffffff" direction={[0,-1,-.2]}/>
-        <GameObjects position={[0,0,-40]} delay={0}/>
-        <GameObjects position={[-5,2,-40]} delay={3000}/>
-        <GameObjects position={[4,4,-40]} delay={3500}/>
-        <GameObjects position={[0,0,-40]} delay={4400}/>
-        <GameObjects position={[1,-4,-40]} delay={9000}/>
-        <GameObjects position={[4,0,-30]} delay={2000}/>
+        <GameObjects position={[0,0,-40]} delay={0} soundfile={require('./res/music/ripple.wav')}/>
+        <GameObjects position={[5,6,-40]} delay={500} soundfile={require('./res/music/ripple.wav')}/>
+        <GameObjects position={[2,1,-40]} delay={1000} soundfile={require('./res/music/ripple.wav')}/>         
+        <GameObjects position={[-5,2,-40]} delay={2000} soundfile={require('./res/music/ripple.wav')}/>
+        <GameObjects position={[4,4,-40]} delay={1200} soundfile={require('./res/music/ripple.wav')}/>
+        <GameObjects position={[1,-4,-40]} delay={800}soundfile={require('./res/music/ripple.wav')}/>       
         <ViroNode>{InitialARScene.getSmoke()}</ViroNode>
         <ViroNode>{InitialARSounds.startBGM()}</ViroNode> 
       </ViroARScene>

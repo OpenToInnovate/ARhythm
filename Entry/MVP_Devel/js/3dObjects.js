@@ -27,14 +27,19 @@ import {
   ViroCamera,
 } from 'react-viro';
 
-var InitialARSounds = require('./sounds');
 
+var InitialARSounds = require('./sounds');
+//(Math.floor(Math.random() * 5) + 1)
 ViroAnimations.registerAnimations({
-  moveToPos:{properties:{positionX:0, positionY:0, positionZ:40}, duration:4000, delay:0},
-  loopRotate:{properties:{rotateY:"+=400", rotateX:"+=1200", }, duration:4000 },
+  moveToPos:{properties:{positionX:((Math.floor(Math.random() * 80) -40 )/10), positionY:((Math.floor(Math.random() * 50) - 20)/10), positionZ:80}, duration:4000, delay:0},
+  resetToRand:{properties:{positionX:((Math.floor(Math.random() * 80) -40 )/10), positionY:((Math.floor(Math.random() * 50) - 20)/10), positionZ:-40}, duration:0, delay:1000},
+  DelayFun:{properties:{rotateY:"+=2", rotateX:"+=2", }, duration:0, delay:8000},
+  loopRotate:{properties:{rotateY:"+=400", rotateX:"+=1800", }, duration:4000 },
   parallelAnim:[
-    ["moveToPos"],["loopRotate"]
-],
+    ["moveToPos"],["loopRotate","resetToRand"]],
+  sequenceResetAnim:[
+    ["resetToRand","parallelAnim"]
+  ],
 });
 
 class GameObjects extends Component {
@@ -43,14 +48,16 @@ class GameObjects extends Component {
  //   this.positionX = new Animated.position;
     this.state = { muted: false, paused: true, cubeVisible: true };
     this._onclicky = this._onclicky.bind(this);
+    this._resetAnimation = this._resetAnimation.bind(this);
     this._onclickyReset = this._onclickyReset.bind(this);
     this.props.position
     this.props.delay
+    this.props.soundfile
   }
 
   render(){
     return((
-      <ViroNode position={this.props.position} rotation={[0, 0, 0]} scale={[1, 1, 1]}>
+      <ViroNode position={this.props.position} rotation={[0, 0, 0]} scale={[1.0, 1.0, 1.0]}>
       <Viro3DObject
             onClick={this._onclicky}
             source={require('./res/assets/object_cube.vrx')}
@@ -62,8 +69,8 @@ class GameObjects extends Component {
             animation={{
               name: "parallelAnim",
               delay:this.props.delay,
-              interruptible: true,
-              loop:false,
+              interruptible: false,
+              loop:true,
               run:true,
             }}
       />
@@ -72,32 +79,33 @@ class GameObjects extends Component {
               scale={[1, 1, 1]}
               duration={1100}
               delay={0}
+              delay={0}
               visible={!this.state.cubeVisible}
               run={!this.state.cubeVisible}
-              loop={false}
+              loop={true}
               fixedToEmitter={false}
 
               image={{
                 source:require("./res/particle_fire.png"),
-                height:1,
-                width:1,
+                height:2,
+                width:2,
               }}
 
               spawnBehavior={{
                 particleLifetime:[500,500],
                 emissionRatePerSecond:[200,200],
-                maxParticles:200,
+                maxParticles:300,
                 spawnVolume:{
                   shape:"Sphere",
-                  params:[.3, .3, .3],
+                  params:[.6, .6, .6],
                   spawnOnSurface:true
                 },
               }}
               animation={{
                 name: "parallelAnim",
                 delay:this.props.delay,
-                interruptible: true,
-                loop:false,
+                interruptible: false,
+                loop:true,
                 run:true,
               }}
               particleAppearance={{
@@ -111,15 +119,23 @@ class GameObjects extends Component {
               }}
 
               particlePhysics={{
-                velocity:{initialRange:[[-2,2,0], [-2,-2,0]]},
+                velocity:{initialRange:[[-4,4,0], [-2,-2,0]]},
                 acceleration:{initialRange:[[0,0,0], [0,0,0]]}
               }}
           />
       <ViroSound paused={this.state.paused} onFinish={this._onclickyReset} muted={this.state.muted} 
-            source={require('./res/music/ripple.wav')} loop={false} volume={1.0} 
+            source={this.props.soundfile} loop={false} volume={1.0} 
       /> 
       </ViroNode>
       ));
+  }
+
+  _resetAnimation() {
+    this.setState({ cubeVisible: false });
+    this.setState({
+      currentAnim:"sequenceResetAnim", 
+    });
+    this.setState({ cubeVisible: true });
   }
 
   _onclicky() {
@@ -129,7 +145,10 @@ class GameObjects extends Component {
 
   _onclickyReset() {
     this.setState({ paused: !this.state.paused });
- //   this.setState({ muted: false });
+    this.setState({ currentAnim:"DelayFun"});
+    
+    this.setState({ cubeVisible: true });
+    this.setState({ currentAnim:"parallelAnim"});
   }
   
 };
