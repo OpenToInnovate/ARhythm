@@ -9,15 +9,11 @@
 
 import React, { Component } from 'react';
 import {
-  AppRegistry,
-  Text,
   View,
   StyleSheet,
-  PixelRatio,
   TouchableOpacity,
   Image,
   WebView,
-  ImageStyle,
 } from 'react-native';
 
 import {
@@ -164,13 +160,13 @@ var localStyles = StyleSheet.create({
   buttons : {
     height: 160,
     width: 300,
-    paddingTop:0,
-    paddingBottom:0,
-    marginTop: 0,
-    marginBottom: 0,
+    paddingTop:1,
+    paddingBottom:1,
+    marginTop: 1,
+    marginBottom: 1,
     backgroundColor:'#ffffff',
-    borderRadius: 0,
-    borderWidth: 0,
+    borderRadius: 1,
+    borderWidth: 1,
     borderColor: '#ffffff',
   },
   ImageIconStyle: {

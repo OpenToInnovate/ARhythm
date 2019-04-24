@@ -1,5 +1,5 @@
 {
-  "name": "ViroSample",
+  "name": "ARhythm",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -10,7 +10,6 @@
   "dependencies": {
     "react": "16.8.3",
     "react-native": "0.59.3",
-    "react-native-webview-android": "^1.1.17",
     "react-viro": "2.14.0"
   },
   "devDependencies": {

@@ -31,10 +31,10 @@ import {
 var InitialARSounds = require('./sounds');
 //(Math.floor(Math.random() * 5) + 1)
 ViroAnimations.registerAnimations({
-  moveToPos:{properties:{positionX:((Math.floor(Math.random() * 80) -40 )/10), positionY:((Math.floor(Math.random() * 50) - 20)/10), positionZ:80}, duration:4000, delay:0},
+  moveToPos:{properties:{positionX:((Math.floor(Math.random() * 80) -40 )/10), positionY:((Math.floor(Math.random() * 50) - 20)/10), positionZ:80}, duration:5000, delay:0},
   resetToRand:{properties:{positionX:((Math.floor(Math.random() * 80) -40 )/10), positionY:((Math.floor(Math.random() * 50) - 20)/10), positionZ:-40}, duration:0, delay:1000},
   DelayFun:{properties:{rotateY:"+=2", rotateX:"+=2", }, duration:0, delay:8000},
-  loopRotate:{properties:{rotateY:"+=400", rotateX:"+=1800", }, duration:4000 },
+  loopRotate:{properties:{rotateY:"+=400", rotateX:"+=1800", }, duration:5000 },
   parallelAnim:[
     ["moveToPos"],["loopRotate","resetToRand"]],
   sequenceResetAnim:[
@@ -48,12 +48,14 @@ class GameObjects extends Component {
  //   this.positionX = new Animated.position;
     this.state = { muted: false, paused: true, cubeVisible: true };
     this._onclicky = this._onclicky.bind(this);
+    this._onhovery = this._onhovery.bind(this);
     this._resetAnimation = this._resetAnimation.bind(this);
     this._onclickyReset = this._onclickyReset.bind(this);
     this.props.position
     this.props.delay
     this.props.soundfile
   }
+//            onHover={this._onhovery}
 
   render(){
     return((
@@ -63,7 +65,7 @@ class GameObjects extends Component {
             source={require('./res/assets/object_cube.vrx')}
             resources={[require('./res/assets/cube_diffuse.png'),
                         require('./res/assets/cube_specular.png')]}
-            highAccuracyEvents={true}
+            highAccuracyEvents={false}
             visible={this.state.cubeVisible}
             type="VRX"
             animation={{
@@ -141,6 +143,11 @@ class GameObjects extends Component {
   _onclicky() {
     this.setState({ paused: !this.state.paused });
     this.setState({ cubeVisible: !this.state.cubeVisible });
+  }
+
+  _onhovery() {
+    this.setState({ paused: !this.state.paused });
+    this.setState({ cubeVisible: !this.state.cubeVisible });   
   }
 
   _onclickyReset() {

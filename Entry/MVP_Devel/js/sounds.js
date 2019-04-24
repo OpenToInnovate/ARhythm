@@ -27,20 +27,21 @@ import {
 
 export function startBGM(){
   return((
-    <ViroSound paused={false} muted={false} source={require('./res/music/Believer/song.mp3')} loop={false} volume={0.2}/>
-     ));
+    <ViroSound paused={false} muted={false} source={require('./res/music/DaddyPSY/daddy.mp3')} loop={false} volume={0.2}/>
+    ));
  }
  /*
-     <ViroSound paused={false} muted={false} source={require('./res/music/Kids/k_house_2.mp3')} loop={false} volume={0.2}/>
-
-  <ViroSound paused={false} muted={false} source={require('./res/music/MrBlueSky/Song.mp3')} loop={false} volume={0.2}/>
-  <ViroSound paused={false} muted={false} source={require('./res/music/DaddyPSY/daddy.mp3')} loop={false} volume={0.2}/>0
-  <ViroSound paused={false} muted={false} source={require('./res/music/Believer/song.mp3')} loop={false} volume={0.2}/>
-   <ViroSound paused={false} muted={false} source={require('./res/music/Kids/thebeginning.mp3')} loop={false} volume={0.2}/>
-  <ViroSound paused={false} muted={false} source={require('./res/music/Jeff/contatgion.mp3')} loop={false} volume={0.2}/>
-  <ViroSound paused={false} muted={false} source={require('./res/music/Jeff/Mad-Carnival.mp3')} loop={false} volume={0.2}/>
+    <ViroSound paused={false} muted={false} source={require('./res/music/Kids/k_house_2.mp3')} loop={false} volume={0.2}/>
+ <ViroSound paused={false} muted={false} source={require('./res/music/Jeff/Sean-Mendoza.mp3')} loop={false} volume={0.2}/>
+ <ViroSound paused={false} muted={false} source={require('./res/music/Jeff/contatgion.mp3')} loop={false} volume={0.2}/>
+ <ViroSound paused={false} muted={false} source={require('./res/music/Jeff/Mad-Carnival.mp3')} loop={false} volume={0.2}/>
+    <ViroSound paused={false} muted={false} source={require('./res/music/MrBlueSky/Song.mp3')} loop={false} volume={0.2}/>
   <ViroSound paused={false} muted={false} source={require('./res/music/Jeff/prison.mp3')} loop={false} volume={0.2}/>
-  <ViroSound paused={false} muted={false} source={require('./res/music/Jeff/Sean-Mendoza.mp3')} loop={false} volume={0.2}/>
+  <ViroSound paused={false} muted={false} source={require('./res/music/Believer/song.mp3')} loop={false} volume={0.2}/>
+   <ViroSound paused={false} muted={false} source={require('./res/music/Jeff/contatgion.mp3')} loop={false} volume={0.2}/>
+    <ViroSound paused={false} muted={false} source={require('./res/music/Kids/thebeginning.mp3')} loop={false} volume={0.2}/>
+ 
+
 
 
  */

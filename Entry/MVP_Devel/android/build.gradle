@@ -14,54 +14,9 @@ buildscript {
 }
 
 allprojects {
-    configurations.matching { it.name == '_internal_aapt2_binary' }.all { config ->
-        config.resolutionStrategy.eachDependency { details ->
-            details.useVersion("3.5.0-alpha03-5252756")
-        }
-    }
-    configurations.matching { it.name == '_internal_aapt2_binary' }.all { config ->
-        config.resolutionStrategy.eachDependency { details ->
-            details.useVersion("3.5.0-alpha03-5252756")
-        }
-    }
-    configurations.matching { it.name == '_internal_aapt2_binary' }.all { config ->
-        config.resolutionStrategy.eachDependency { details ->
-            details.useVersion("3.5.0-alpha03-5252756")
-        }
-    }
-    configurations.matching { it.name == '_internal_aapt2_binary' }.all { config ->
-        config.resolutionStrategy.eachDependency { details ->
-            details.useVersion("3.5.0-alpha03-5252756")
-        }
-    }
-    configurations.matching { it.name == '_internal_aapt2_binary' }.all { config ->
-        config.resolutionStrategy.eachDependency { details ->
-            details.useVersion("3.5.0-alpha03-5252756")
-        }
-    }
-    configurations.matching { it.name == '_internal_aapt2_binary' }.all { config ->
-        config.resolutionStrategy.eachDependency { details ->
-            details.useVersion("3.5.0-alpha03-5252756")
-        }
-    }
-    configurations.matching { it.name == '_internal_aapt2_binary' }.all { config ->
-        config.resolutionStrategy.eachDependency { details ->
-            details.useVersion("3.5.0-alpha03-5252756")
-        }
-    }
-    configurations.matching { it.name == '_internal_aapt2_binary' }.all { config ->
-        config.resolutionStrategy.eachDependency { details ->
-            details.useVersion("3.5.0-alpha03-5252756")
-        }
-    }
-    configurations.matching { it.name == '_internal_aapt2_binary' }.all { config ->
-        config.resolutionStrategy.eachDependency { details ->
-            details.useVersion("3.5.0-alpha03-5252756")
-        }
-    }
-    configurations.matching { it.name == '_internal_aapt2_binary' }.all { config ->
-        config.resolutionStrategy.eachDependency { details ->
-            details.useVersion("3.5.0-alpha03-5252756")
+    gradle.projectsEvaluated {
+        tasks.withType(JavaCompile) {
+            options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
         }
     }
     configurations.matching { it.name == '_internal_aapt2_binary' }.all { config ->
@@ -76,58 +31,14 @@ allprojects {
             details.useVersion("3.5.0-alpha03-5252756")
         }
     }
+
+
     repositories {
-        mavenLocal()
-        maven {
-            url 'https://maven.google.com/'
-        }
-        maven {
-            url 'https://maven.google.com/'
-        }
-        maven {
-            url 'https://maven.google.com/'
-        }
-        maven {
-            url 'https://maven.google.com/'
-        }
-        maven {
-            url 'https://maven.google.com/'
-        }
-        maven {
-            url 'https://maven.google.com/'
-        }
-        maven {
-            url 'https://maven.google.com/'
-        }
-        maven {
-            url 'https://maven.google.com/'
-        }
-        maven {
-            url 'https://maven.google.com/'
-        }
-        maven {
-            url 'https://maven.google.com/'
-        }
-        maven {
-            url 'https://maven.google.com/'
-        }
-        maven {
-            url 'https://maven.google.com/'
-        }
-        maven {
-            url 'https://maven.google.com/'
-        }
-        maven {
-            url 'https://maven.google.com/'
-        }
-        maven {
-            url 'https://maven.google.com/'
-        }
-        maven {
-            url 'https://maven.google.com/'
-        }
         google()
         jcenter()
+        maven {
+            url 'https://maven.google.com/'
+        }
         maven {
             // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
             url "$rootDir/../node_modules/react-native/android"
